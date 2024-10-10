@@ -1,16 +1,17 @@
 <?php
     require_once '../core/conexao.php';
 
-    $select = $pdo->prepare('SELECT * FROM clientes'); 
+    if (isset($_GET['txtBusca'])) {
+
+        $select = $pdo->prepare('SELECT * FROM clientes WHERE nome = :nome');
+        $select->bindValue(':nome',$_GET['txtBusca']);
+
+    } else {
+        $select = $pdo->prepare('SELECT * FROM clientes'); 
+    }
+
     $select->execute();
-
     $clientes = $select->fetchAll();
-
-    /*
-    echo '<pre>';
-    print_r($clientes);
-    echo '</pre>';
-    */
 ?>
 
 <!DOCTYPE html>
@@ -50,19 +51,21 @@
 
             <tbody>
                 
-                <tr>
-                    <td>000.000.000-00</td>
-                    <td>Augusto César</td>
-                    <td>Surubim</td>
-                    <td class="operacoes">
-                        <a href="#">Editar</a>
-                        <a href="#">Deletar</a>
-                    </td>
-                </tr>
+                <?php foreach ($clientes as $cli) { ?>
+                    <tr>
+                        <td><?php echo $cli->cpf; ?></td>
+                        <td><?php echo $cli->nome; ?></td>
+                        <td><?php echo $cli->cidade; ?></td>
+                        <td class="operacoes">
+                            <a href="#">Editar</a>
+                            <a href="#">Deletar</a>
+                        </td>
+                    </tr>
+                <?php } ?>
                 
             </tbody>
         </table>
     </main>
-
+</div>
 </body>
 </html>
