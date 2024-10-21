@@ -3,8 +3,9 @@
 
     if (isset($_GET['txtBusca'])) {
 
-        $select = $pdo->prepare('SELECT * FROM clientes WHERE nome = :nome');
-        $select->bindValue(':nome',$_GET['txtBusca']);
+        $select = $pdo->prepare('SELECT * FROM clientes WHERE nome LIKE :busca OR cpf LIKE :busca OR cidade LIKE :busca');
+
+        $select->bindValue(':busca','%'.$_GET['txtBusca'].'%');
 
     } else {
         $select = $pdo->prepare('SELECT * FROM clientes'); 
