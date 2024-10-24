@@ -17,8 +17,8 @@
         <h2>Cadastro de Clientes</h2>
     </section>  
 
-    <main class="busca">
-        <form action="" class="formulario">
+    <main class="mainFormCadastro">
+        <form action="insert.php" method="post" class="formulario">
             
             <label for="txtCpf">CPF</label>
             <input type="text" name="txtCpf" id="txtCpf">
@@ -39,11 +39,14 @@
             <input type="text" name="txtCidade" id="txtCidade">
 
             <label>Sexo</label>
-            <input type="radio" name="txtSexo" id="txtSexoM">
-            <label for="txtSexoM">Masculino</label>
+            
+            <div>
+                <input type="radio" name="txtSexo" id="txtSexoM" value="M">
+                <label for="txtSexoM">Masculino</label>
 
-            <input type="radio" name="txtSexo" id="txtSexoF">
-            <label for="txtSexoF">Feminino</label>
+                <input type="radio" name="txtSexo" id="txtSexoF" value="F">
+                <label for="txtSexoF">Feminino</label>
+            </div>
 
             <label for="txtRenda">Renda</label>
             <input type="text" name="txtRenda" id="txtRenda">
@@ -51,8 +54,10 @@
             <label for="txtSenha">Senha</label>
             <input type="password" name="txtSenha" id="txtSenha">
 
-            <input type="checkbox" name="txtBloqueado" id="txtBloqueado">
-            <label for="txtBloqueado">Bloqueado</label>
+            <div style="margin-top: 20px">
+                <input type="checkbox" name="txtBloqueado" id="txtBloqueado">
+                <label for="txtBloqueado">Bloqueado</label>
+            </div>
             
             <label for="txtObs">Observações</label>
             <textarea name="txtObs" id="txtObs"></textarea>
