@@ -44,7 +44,26 @@ if (empty($senha)) {
     $senhaCriptografada = password_hash($senha.$salt,PASSWORD_DEFAULT);
 }
 
+if ( count($erros) == 0 ) {
 
+    require_once '../core/conexao.php';
 
+    $insert = $pdo->prepare('INSERT INTO clientes (nome, cpf, email, fone, senha, data_nascimento, sexo, bloqueado, cidade, obs, salt, renda) VALUES (:nome, :cpf, :email, :fone, :senha, :data_nascimento, :sexo, :bloqueado, :cidade, :obs, :salt, :renda)'); 
 
+    $insert->bindValue(':nome',$nome);
+    $insert->bindValue(':cpf',$cpf);
+    $insert->bindValue(':email',$email);
+    $insert->bindValue(':fone',$fone);
+    $insert->bindValue(':senha',$senha);
+    $insert->bindValue(':data_nascimento',$dataNasc);
+    $insert->bindValue(':sexo',$sexo);
+    $insert->bindValue(':bloqueado',$bloqueado);
+    $insert->bindValue(':cidade',$cidade);
+    $insert->bindValue(':obs',$obs);
+    $insert->bindValue(':salt',$salt);
+    $insert->bindValue(':renda',$renda);
+
+    $insert->execute();
+
+}
 
