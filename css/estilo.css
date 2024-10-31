@@ -144,3 +144,16 @@ body {
     margin-bottom: 50px;
     font-size: 18px;
 }
+
+.erro {
+    width: 450px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 40px;
+}
+
+.erro a {
+    font-weight: bold;
+    text-decoration: none;
+}

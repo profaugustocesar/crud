@@ -63,7 +63,48 @@ if ( count($erros) == 0 ) {
     $insert->bindValue(':salt',$salt);
     $insert->bindValue(':renda',$renda);
 
-    $insert->execute();
+    if ($insert->execute()) {
+        header('Location: index.php');
+    } else {
+        array_push($erros,'Erro ao salvar os dados na Tabela');
+    }
 
 }
 
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erro</title>
+
+    <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+
+    <header class="cabecalho">
+        <h1>CRUD</h1>
+    </header>
+
+    <section class="titulo">
+        <h2>Aconteceram os seguintes erros:</h2>
+    </section>  
+
+    <main class="dados">
+    
+        <div class="erro">
+            <?php foreach ($erros as $e) { ?>
+
+                <h3>Erro: <?php echo $e; ?></h3>
+
+            <?php } ?>
+
+            <a href="javascript:history.back();">Voltar ao Cadastro</a>
+        </div>
+    
+    </main>
+
+</body>
+</html>
