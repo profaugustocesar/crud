@@ -14,11 +14,13 @@ $cidade = filter_var($_POST['txtCidade'],FILTER_SANITIZE_SPECIAL_CHARS);
 
 $sexo = filter_var($_POST['txtSexo'],FILTER_SANITIZE_SPECIAL_CHARS);
 
-$renda = filter_var($_POST['txtRenda'],FILTER_SANITIZE_NUMBER_FLOAT);
+$renda = str_replace('.','',$_POST['txtRenda']);
+$renda = str_replace(',','.',$renda);
+$renda = filter_var($renda,FILTER_SANITIZE_NUMBER_FLOAT);
 
 $senha = filter_var($_POST['txtSenha'],FILTER_SANITIZE_SPECIAL_CHARS);
 
-$bloqueado = filter_var($_POST['txtBloqueado'],FILTER_SANITIZE_SPECIAL_CHARS);
+$bloqueado = filter_var($_POST['txtBloqueado'],FILTER_VALIDATE_BOOL);
 
 $obs = filter_var($_POST['txtObs'],FILTER_SANITIZE_SPECIAL_CHARS);
 
@@ -54,7 +56,7 @@ if ( count($erros) == 0 ) {
     $insert->bindValue(':cpf',$cpf);
     $insert->bindValue(':email',$email);
     $insert->bindValue(':fone',$fone);
-    $insert->bindValue(':senha',$senha);
+    $insert->bindValue(':senha',$senhaCriptografada);
     $insert->bindValue(':data_nascimento',$dataNasc);
     $insert->bindValue(':sexo',$sexo);
     $insert->bindValue(':bloqueado',$bloqueado);
