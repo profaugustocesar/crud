@@ -12,7 +12,15 @@ $dataNasc = filter_var($_POST['txtDataNasc'],FILTER_SANITIZE_SPECIAL_CHARS);
 
 $cidade = filter_var($_POST['txtCidade'],FILTER_SANITIZE_SPECIAL_CHARS);
 
-$sexo = filter_var($_POST['txtSexo'],FILTER_SANITIZE_SPECIAL_CHARS);
+
+if (!isset($_POST['txtSexo'])) {
+    $sexo = '-';
+} else {
+    $sexo = filter_var($_POST['txtSexo'],FILTER_SANITIZE_SPECIAL_CHARS);
+}
+
+
+
 
 $renda = str_replace('.','',$_POST['txtRenda']);
 $renda = str_replace(',','.',$renda);
@@ -20,10 +28,13 @@ $renda = filter_var($renda,FILTER_SANITIZE_NUMBER_FLOAT);
 
 $senha = filter_var($_POST['txtSenha'],FILTER_SANITIZE_SPECIAL_CHARS);
 
-$bloqueado = filter_var($_POST['txtBloqueado'],FILTER_VALIDATE_BOOL);
+if (!isset($_POST['txtBloqueado'])) {
+    $bloqueado = false;
+} else {
+    $bloqueado = filter_var($_POST['txtBloqueado'],FILTER_VALIDATE_BOOL);
+}
 
 $obs = filter_var($_POST['txtObs'],FILTER_SANITIZE_SPECIAL_CHARS);
-
 
 $erros = [];
 
