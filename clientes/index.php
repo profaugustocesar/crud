@@ -59,7 +59,7 @@
                         <td><?php echo $cli->cidade; ?></td>
                         <td class="operacoes">
                             <a href="#">Editar</a>
-                            <a href="#">Deletar</a>
+                            <a href="delete.php?id=<?php echo $cli->id; ?>">Deletar</a>
                         </td>
                     </tr>
                 <?php } ?>
