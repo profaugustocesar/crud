@@ -1,0 +1,49 @@
+HTML = Definir a estrutura do conteúdo da página
+
+CSS = Definir o visual da página
+
+	CSS Flexbox = Definir o layout da página
+
+PHP = Conectar o visual com o BD
+
+	Drivers de conexão com o BD no PHP: MySQLi e PDO
+
+CRUD = Create, Read, Update, Delete
+
+PHP header = Redirecionar o usuário para outra tela
+
+$_GET = pegar os dados da requisição que vinham na URL
+
+$_POST = pegar os dados vindos no CORPO da requisição
+
+A função filter_var ou filter_input = serve para filtrar os dados de entrada prevenindo ataques
+
+
+=====================
+
+	require_once '../core/conexao.php';
+
+    	$insert = $pdo->prepare('INSERT INTO clientes (nome, cpf, email) 	VALUES (:nome, :cpf, :email)'); 
+
+    	$insert->bindValue(':nome',$nome);
+    	$insert->bindValue(':cpf',$cpf);
+    	$insert->bindValue(':email',$email);
+
+    	header('Location: index.php');
+
+======================
+
+	require_once '../core/conexao.php';
+
+    	$update = $pdo->prepare('UPDATE clientes SET nome=:nome, cpf=:cpf 	WHERE id=:id'); 
+
+    	$update->bindValue(':nome',$nome);
+    	$update->bindValue(':cpf',$cpf);
+	$update->bindValue(':id',$id);
+    	
+    	header('Location: index.php');
+
+	
+
+
+

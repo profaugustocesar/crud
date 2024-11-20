@@ -31,6 +31,8 @@
     <main class="mainFormCadastro">
         <form action="update.php" method="post" class="formulario">
             
+            <input type="hidden" name="txtId" value="<?php echo $cliente->id; ?>">
+
             <label for="txtCpf">CPF</label>
             <input type="text" name="txtCpf" id="txtCpf" value="<?php echo $cliente->cpf; ?>">
 
